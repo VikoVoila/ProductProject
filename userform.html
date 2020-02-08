@@ -1,0 +1,191 @@
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script>  
+function validateform(){  
+	/*var nameExpression=/^[a-zA-Z]+$/;*/
+var f_name=document.myform.fname.value;  
+var l_name=document.myform.lname.value;  
+var u_age=document.myform.uage.value;  
+var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+var phonePattern = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
+var u_email=document.myform.uemail.value;
+var u_phone=document.myform.uphone.value;
+var u_addr=document.myform.uaddr.value;
+var u_city=document.myform.ucity.value;
+
+/*var atposition=u_email.indexOf("@");  
+var dotposition=u_email.lastIndexOf(".");  */
+var password=document.myform.password.value;  
+  
+if (f_name==null || f_name==""){  
+  alert("First Name can't be blank");  
+  return false;  
+}else if (l_name==null|| l_name=="") {
+	alert("Last Name can't be blank");  
+  return false;  
+
+}else if (u_age<15 || u_age>50 || u_age==null || u_age=="") {
+	alert("Invalid Age");
+	return false;
+}else if (!emailPattern.test(u_email)|| u_email=="") {
+	alert("Invalid Email");
+	return false;
+}else if (!phonePattern.test(u_phone) || u_phone=="") {
+	alert("Invalid Phone Number");
+	return false;
+}else if (u_addr==""|| u_addr==null) {
+  alert("Please Enter The Address");
+  return false;
+}else if (u_city==""|| u_city==null) {
+  alert("Please Enter The City Name");
+  return false;
+}
+else if(password.length<6){  
+  alert("Password must be at least 6 characters long.");  
+  return false;  
+  }  
+}  
+</script>  
+<body>  
+	<div class="container">
+    <h2>Apply Here</h2>
+  <p>In this example, we use <code>.please fill form</code> to indicate what's missing before submitting the form:</p>
+		<form name="myform" method="post" action="#" onsubmit="return validateform()" > 
+		<div class="form-row">
+			<div class="form-group col-md-6">
+      			<label for="inputFname">First Name</label>
+      			<input type="fname" name="fname" onblur="validate" class="form-control" id="inputFname" placeholder="First Name">
+    		</div>
+    		<div class="form-group col-md-6">
+      			<label for="inputPLname">Last Name</label>
+      			<input type="lname" name="lname" onblur="validate" class="form-control" id="inputLname" placeholder="Last Name">
+ 		    </div>
+		</div> 
+
+		<div class="form-row">
+			<div class="form-group col-md-4">
+      			<label for="inputAge">Age</label>
+		    	<input type="age" name="uage" onblur="validate" class="form-control" id="age" placeholder="Age">
+    		</div>
+    		<div class="form-group col-md-4">
+      			<label for="inputEmail4">Email</label>
+      			<input type="email" name="uemail" onblur="validate" class="form-control" id="inputEmail4" placeholder="Email">
+    		</div>
+
+    		<div class="form-group col-md-4">
+      
+      			<label for="inputPhone">Phone</label>
+     			<input type="phone" name="uphone" onblur="validate" class="form-control" id="inputPhone" placeholder="Phone">
+   			 </div>
+		</div>
+
+    <!-- Address -->
+  <fieldset class="">
+    <legend class="addborder">Address</legend>
+    <div class="form-group">
+    <label for="inputAddress">Street Address</label>
+    <input type="text" name="uaddr" onblur="validate" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    
+  </div>
+  
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputCity">City</label>
+      <input type="text" name="ucity" onblur="validate" class="form-control" id="inputCity">
+      
+    </div>
+  
+    <div class="form-group col-md-4">
+      <label for="inputState">Country</label>
+      <select id="inputState" class="form-control">
+        <option selected>COUNTRY</option>
+        <option>INDIA</option>
+        <option>CHINA</option>
+        <option>U.S.A</option>
+        <option>ENGLAND</option>
+        
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Country</label>
+      <select id="inputState" class="form-control">
+        <option selected>STATE</option>
+        <option>U.P</option>
+        <option>M.P</option>
+        <option>DELHI</option>
+        <option>A.P</option>
+        
+      </select>
+    </div>
+  </div>
+  </fieldset>
+
+  <!-- --------------------------------------------------- -->
+
+  <div class=" container">
+    <div class="radio">
+      <label><input type="radio" name="optradio" checked>&nbsp Male Trainer</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" name="optradio">&nbsp Female Trainer</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" name="optradio">&nbsp No Preferences</label>
+    </div>
+
+    <!-- <div class="form-row"></div> -->
+    <div class="form-row">
+      <div class="col-md-2"><label>
+        <input type="radio" name="optradio">&nbsp Trainers Name </label>
+      </div>
+      <div class="col-md-10">
+        <input type="tname" class="form-control" id="inputTname" placeholder="Trainer Name">
+      </div>
+    </div> 
+    <br>
+    <div class="form-row">
+      <div class="col-md-2"><label>
+        <input type="radio" name="optradio">&nbsp Others </label>
+      </div>
+      <div class="col-md-10">
+        <input type="oname" class="form-control" id="inputOname" placeholder="Other Name">
+      </div>
+
+    </div>
+
+  <div class="form-group">
+    <div class="radio">
+      <br>
+      <label>Do You need Physical Therapist ?<br>
+        <input type="radio" name="optradio" checked>&nbsp YES</label>
+        <input type="radio" name="optradio" checked>&nbsp NO</label>
+    </div>
+  </div> 
+
+  <div class="fieldset">
+    <div class="legend">
+      Appointment : (Free)
+    </div>
+  </div>
+  </div>
+	
+	<!-- <label for="inputFname">First Name</label>
+	<input type="text" name="fname"><br/>  --> 
+
+Password: <input type="password" name="password"><br/>  
+<input type="submit" value="register">  
+</form>
+	</div>
+  
+</body>
+</html>
